@@ -32,7 +32,7 @@
       font-weight: bold;
       cursor: pointer;
     }
-    video {
+    iframe {
       width: 100%;
       height: auto;
       display: block;
@@ -57,8 +57,8 @@
   <!-- Roof -->
   <polygon points="100,200 250,100 400,200" fill="#A52A2A" />
   <!-- Windows -->
-  <rect class="window" id="window1" x="130" y="230" width="60" height="60" onclick="openModal('video1.mp4')" />
-  <rect class="window" id="window2" x="310" y="230" width="60" height="60" onclick="openModal('video2.mp4')" />
+  <rect class="window" id="window1" x="130" y="230" width="60" height="60" onclick="openModal('https://www.youtube.com/embed/qURDXoQ_e1Y?si=tztVrtZDk8fHyaip')" />
+  <rect class="window" id="window2" x="310" y="230" width="60" height="60" onclick="openModal('https://www.youtube.com/embed/qURDXoQ_e1Y?si=tztVrtZDk8fHyaip')" />
   <!-- Add more windows as needed -->
 </svg>
 
@@ -66,27 +66,23 @@
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
-    <video id="modalVideo" controls>
-      <source src="" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <iframe id="modalVideo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 </div>
 
 <script>
   function openModal(videoSrc) {
     var modal = document.getElementById("myModal");
-    var video = document.getElementById("modalVideo");
-    video.src = videoSrc;
+    var iframe = document.getElementById("modalVideo");
+    iframe.src = videoSrc;
     modal.style.display = "block";
   }
 
   function closeModal() {
     var modal = document.getElementById("myModal");
-    var video = document.getElementById("modalVideo");
+    var iframe = document.getElementById("modalVideo");
     modal.style.display = "none";
-    video.pause();
-    video.currentTime = 0;
+    iframe.src = ""; // Stop the video when closing the modal
   }
 
   // Close modal when clicking outside the content
